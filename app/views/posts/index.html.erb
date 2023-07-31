@@ -1,0 +1,9 @@
+<%= @response %>
+<%= link_to "Sign-Out", destroy_admin_user_session_path, method: :delete %>
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= post.title %></li>
+    <li><%= post.body %></li>
+  <% end %>
+</ul>
+<!--%= will_paginate @posts %>
