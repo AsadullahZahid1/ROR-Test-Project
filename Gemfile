@@ -32,6 +32,13 @@ gem "redis", "~> 4.0"
 
 gem 'bcrypt',"~> 3.1.7"
 
+gem "excon"
+gem 'pry'
+gem 'httparty'
+gem 'rails-ujs'
+gem 'activeadmin', '~> 3.0'
+gem 'sassc'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
