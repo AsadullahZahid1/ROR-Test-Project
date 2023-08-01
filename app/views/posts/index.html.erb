@@ -1,9 +1,20 @@
 <%= @response %>
-<%= link_to "Sign-Out", destroy_admin_user_session_path, method: :delete %>
+<%= link_to "Sign-Out", destroy_admin_user_session_path, method: :delete %> <hr>
+<br>
+<%= link_to "Create New Post", new_post_path %>
 <ul>
+  <% $num=1 %>
+  <br>
+  <h3><strong>Welcome: </strong> <%= "#{current_User.email} "%></h3>
   <% @posts.each do |post| %>
-    <li><%= post.title %></li>
-    <li><%= post.body %></li>
+    <h2> Post: <%="#{$num}" %></h2>
+    <strong><h4>Post title: </h4><p><%= post.title %></p> </strong>
+    <strong><h4>Post content:</h4> <p><%= post.body %></p> </strong>
+    <% $num+=1 %>
   <% end %>
 </ul>
+
+
+
 <!--%= will_paginate @posts %>
+<!-%= paginate @posts %-->
