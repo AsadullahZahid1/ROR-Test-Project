@@ -37,6 +37,7 @@ gem "excon"
 gem 'pry'
 gem 'httparty'
 gem 'rails-ujs'
+gem 'bootstrap'
 gem 'activeadmin', '~> 3.0'
 gem 'sassc'
 
@@ -61,6 +62,7 @@ gem 'bulma-rails', '~> 0.9.4'
 gem 'simple_form', '~> 5.2'
 
 
+gem 'webpacker'
 
 gem 'devise'
 # Use Sass to process CSS
@@ -80,6 +82,7 @@ group :development do
   gem "letter_opener"
   gem 'guard', '~> 2.18'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
+  gem 'byebug'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

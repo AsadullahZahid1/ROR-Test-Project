@@ -10,6 +10,18 @@
     <h2> Post: <%="#{$num}" %></h2>
     <strong><h4>Post title: </h4><p><%= post.title %></p> </strong>
     <strong><h4>Post content:</h4> <p><%= post.body %></p> </strong>
+    <h3><strong>Comments: </strong></h3>
+    <ul>
+      <% post.comments.each do |comment| %>
+        <li><strong><%= comment.user.email %>:</strong> <%= comment.content %></li>
+      <% end %>
+    </ul>
+
+    <%= form_with(model: [post, @new_comment], url: post_comments_path(post)) do |form| %>
+      <%= form.text_area :content, placeholder: 'Write your comment here...' %>
+      <%= form.submit 'Submit Comment' %>
+    <% end %>
+    </li>
     <% $num+=1 %>
   <% end %>
 </ul>

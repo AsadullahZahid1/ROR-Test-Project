@@ -5,16 +5,16 @@ class PostsController < ApplicationController
     posts_data = JSON.parse(response.body)
 
     posts_data.each do |post_data|
-      Post.create(body: post_data["body"], title: post_data["title"])
+      current_User.posts.find_or_create_by(body: post_data["body"], title: post_data["title"])
     end
     @posts = Post.all
+    @new_comment=Comment.new
     #@posts = Post.all.page(params[:page])
   end
 
 
-
   def show
-
+  @post=Post.find(params[:id])
   end
 
 
@@ -36,6 +36,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).pernit(:title, :content)
+    params.require(:post).permit(:title, :content)
   end
 end
