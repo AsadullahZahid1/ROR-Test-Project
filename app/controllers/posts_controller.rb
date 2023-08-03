@@ -10,6 +10,10 @@ class PostsController < ApplicationController
     @posts = Post.all
     @new_comment=Comment.new
     #@posts = Post.all.page(params[:page])
+
+
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
   end
 
 

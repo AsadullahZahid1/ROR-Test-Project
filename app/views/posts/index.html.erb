@@ -7,6 +7,7 @@
   <br>
   <h3><strong>Welcome: </strong> <%= "#{current_User.email} "%></h3>
   <% @posts.each do |post| %>
+    <div>
     <h2> Post: <%="#{$num}" %></h2>
     <strong><h4>Post title: </h4><p><%= post.title %></p> </strong>
     <strong><h4>Post content:</h4> <p><%= post.body %></p> </strong>
@@ -23,6 +24,7 @@
     <% end %>
     </li>
     <% $num+=1 %>
+    </div>
   <% end %>
 </ul>
 
