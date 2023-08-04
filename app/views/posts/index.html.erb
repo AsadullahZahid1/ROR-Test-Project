@@ -1,4 +1,27 @@
 <%= @response %>
+<%= search_form_for @q, url: posts_path, method: :get do |f| %>
+  <%= f.label :title_cont, 'Title contains' %>
+  <%= f.search_field :title %>
+  <!-- Add more search fields as needed -->
+  <%= f.submit 'Search' %>
+<% end %>
+<% @posts.each do |post| %>
+  <div class="post">
+    <h3><%= post.title %></h3>
+    <p><%= post.body%></p>
+    <!-- Other post details -->
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
 <%= link_to "Sign-Out", destroy_admin_user_session_path, method: :delete %> <hr>
 <br>
 <%= link_to "Create New Post", new_post_path %>

@@ -1,19 +1,14 @@
 require 'httparty'
 class PostsController < ApplicationController
   def index
-    response = HTTParty.get('https://jsonplaceholder.typicode.com/posts')
-    posts_data = JSON.parse(response.body)
-
-    posts_data.each do |post_data|
-      current_User.posts.find_or_create_by(body: post_data["body"], title: post_data["title"])
-    end
-    @posts = Post.all
+    @posts = Post.where(user_id: current_User.id)
     @new_comment=Comment.new
-    #@posts = Post.all.page(params[:page])
+    @posts = Post.all.page(params[:page])
 
 
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true)
+    puts @q.inspect
   end
 
 

@@ -365,12 +365,14 @@ DEPENDENCIES
   httparty
   importmap-rails
   jbuilder
+  jquery-rails
   kaminari
   letter_opener
   pry
   puma (~> 5.0)
   rails (~> 6.1.7.4)
   rails-ujs
+  ransack
   redis (~> 4.0)
   sassc
   selenium-webdriver

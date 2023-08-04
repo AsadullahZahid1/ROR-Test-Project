@@ -7,7 +7,8 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-import $ from 'jquery';
+import  'jquery';
+import './custom'
 global.$ = jQuery;
 import  'stylesheets/application';
 import 'bootstrap';

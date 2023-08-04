@@ -40,7 +40,8 @@ gem 'rails-ujs'
 gem 'bootstrap'
 gem 'activeadmin', '~> 3.0'
 gem 'sassc'
-
+gem 'jquery-rails'
+gem 'ransack'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

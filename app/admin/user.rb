@@ -23,4 +23,5 @@ ActiveAdmin.register User do
     end
     f.actions
   end
+  permit_params :email, :password
 end
