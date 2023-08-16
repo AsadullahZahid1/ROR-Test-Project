@@ -1,15 +1,17 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+
+  validates :email,  uniqueness: true
   has_many :posts
   has_many :comments
+  has_many :contacts
+  has_many :ratings
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :trackable
-
-
-  # def self.ransackable_attributes(auth_object = nil)
-  #   ["email", "password", "other_allowed_attributes"]
-  # end
 
 
   def self.ransackable_attributes(auth_object =nil)
@@ -19,4 +21,7 @@ class User < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["posts"]
   end
+
+
+
 end

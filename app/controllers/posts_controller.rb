@@ -1,40 +1,51 @@
-require 'httparty'
-class PostsController < ApplicationController
-  def index
-    @posts = Post.where(user_id: current_User.id)
-    @new_comment=Comment.new
-    @posts = Post.all.page(params[:page])
+
+  class PostsController < ApplicationController
+     before_action :authenticate_User!
+
+    def index
+      # byebug
+      # if params[:search]
+      #   @posts=current_User.posts.where("title LIKE ? OR body  LIKE ?", "%#{params[:search]}%","%#{params[:search]}%")
+      #   @comments=current_User.comments.where("content LIKE ?","%#{params[:search]}%")
+      #   render 'search_results'
+      # else
+      #     @posts = Post.where(user_id: current_User.id)
+      # end
+
+       @posts=Post.where(user_id: current_User.id)
+       # @post=Post.new
+       @comment=Comment.new
+       @rating=Rating.new
+    end
+
+    def  new
+
+    end
 
 
-    @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
-    puts @q.inspect
-  end
+    def create
 
+    end
+    def show
 
-  def show
-  @post=Post.find(params[:id])
-  end
+    end
+    def search
+      if params[:search]
+        @posts=current_User.posts.where("title LIKE ? OR body  LIKE ?", "%#{params[:search]}%","%#{params[:search]}%")
+        @comments=current_User.comments.where("content LIKE ?","%#{params[:search]}%")
+            render 'search_results'
+      else
+        @posts = Post.where(user_id: current_User.id)
+      end
+      respond_to do |format|
 
+        format.html
+        format.js
+      end
 
-  def  new
-    @post=Post.new()
-  end
+      end
 
-
-  def create
-    @post=Post.new(post_params)
-    if @post.save
-      redirect_to @post
-    else
-      render 'new'
+    def post_params
+      params.require(:post).permit(:title, :body, :user_id)
     end
   end
-  def update
-
-  end
-
-  def post_params
-    params.require(:post).permit(:title, :content)
-  end
-end

@@ -11,10 +11,11 @@ gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
-gem 'kaminari'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
+
+gem 'cancancan'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
@@ -42,6 +43,8 @@ gem 'activeadmin', '~> 3.0'
 gem 'sassc'
 gem 'jquery-rails'
 gem 'ransack'
+gem 'faker'
+gem 'activestorage'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -63,7 +66,6 @@ gem 'bulma-rails', '~> 0.9.4'
 gem 'simple_form', '~> 5.2'
 
 
-gem 'webpacker'
 
 gem 'devise'
 # Use Sass to process CSS
@@ -75,6 +77,9 @@ gem 'devise'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+
 end
 
 group :development do
@@ -97,4 +102,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  gem 'simplecov'
+  gem 'rails-controller-testing'
+
 end

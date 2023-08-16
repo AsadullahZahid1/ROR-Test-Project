@@ -1,5 +1,6 @@
 class AdminUsersController < ApplicationController
-  def create
+  before_action :authenticate_admin_user!
+   def create
     @admin_user = AdminUser.new(admin_user_params)
     # Your create logic here
   end

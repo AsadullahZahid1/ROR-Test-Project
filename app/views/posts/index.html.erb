@@ -1,57 +1,118 @@
-<%= @response %>
-<%= search_form_for @q, url: posts_path, method: :get do |f| %>
-  <%= f.label :title_cont, 'Title contains' %>
-  <%= f.search_field :title %>
-  <!-- Add more search fields as needed -->
-  <%= f.submit 'Search' %>
-<% end %>
-<% @posts.each do |post| %>
-  <div class="post">
-    <h3><%= post.title %></h3>
-    <p><%= post.body%></p>
-    <!-- Other post details -->
-  </div>
-<% end %>
 
 
+<%#= @response %>
 
+<%#= byebug %>
 
+<%#= form_tag(posts_path, method: :get, class: "search-form") do |form| %>
+  <%#= text_field_tag :search, params[:search], placeholder: "Search posts..." %>
+  <%#= submit_tag "Search"%>
+<%# end %>
 
-
-
-
-
-
-<%= link_to "Sign-Out", destroy_admin_user_session_path, method: :delete %> <hr>
 <br>
-<%= link_to "Create New Post", new_post_path %>
-<ul>
+
+
+
+    <%# @posts.each do |post| %>
+<!--      <div class="post">-->
+<!--        <h3><%#= post.title %></h3>-->
+<!--        <p><%#= post.body%></p>-->
+<!--      </div>-->
+    <%# end %>
+
+
+
+
+<button class="btn btn-info">
+   <%= link_to "Sign-Out"  , destroy_admin_user_session_path, method: :delete %>
+</button>
+
+
+
+
+
+
+<br>
+<%#= link_to "Create New Post", new_post_path %>
+<br>
+
+<%#= link_to "Contact Admin", new_contact_path %>
+<!--<ul>-->
   <% $num=1 %>
   <br>
-  <h3><strong>Welcome: </strong> <%= "#{current_User.email} "%></h3>
-  <% @posts.each do |post| %>
-    <div>
-    <h2> Post: <%="#{$num}" %></h2>
-    <strong><h4>Post title: </h4><p><%= post.title %></p> </strong>
-    <strong><h4>Post content:</h4> <p><%= post.body %></p> </strong>
-    <h3><strong>Comments: </strong></h3>
-    <ul>
+<!--  <h3><strong>Welcome: </strong> <%#= "#{current_User.email} "%></h3>-->
+
+  <%# @posts.each do |post| %>
+<!--    <div>-->
+<!--    <h2> Post: <%#="#{$num}" %></h2>-->
+<!--    <strong><h4>Post title: </h4><p><%#= post.title %></p> </strong>-->
+<!--    <strong><h4>Post content:</h4> <p><%#= post.body %></p> </strong>-->
+<!--    <h3><strong>Comments: </strong></h3>-->
+<!--    <ul>-->
+      <%# post.comments.each do |comment| %>
+<!--        <li><strong><%#= comment.user.email %>:</strong> <%#= comment.content %></li>-->
+      <%# end %>
+<!--    </ul>-->
+
+    <%#= form_with(model: [post, @new_comment], url: post_comments_path(post)) do |form| %>
+      <%#= form.text_area :content, placeholder: 'Write your comment here...' %>
+      <%#= form.submit 'Submit Comment' %>
+    <%# end %>
+<!--    </li>-->
+    <%# $num+=1 %>
+<!--    </div>-->
+  <%# end %>
+<!--</ul>-->
+
+
+<div class="text-center">
+  <h3 class="text-primary fst-italic"><strong>Welcome: </strong> <%= "#{current_User.email} "%></h3>
+
+</div>
+
+<div class="card text-center">
+
+<div class="p-3 mb-2 bg-dark text-white ">
+    <% @posts.each do |post| %>
+      <div class="card-header">
+        Post <%= "#{$num}" %>
+      </div >
+    <div class="card-body">
+    <h5 class="card-title">Post Title</h5>
+    <p class="card-text"><%= post.title %></p>
+    <h5 class="card-title">Post Content</h5>
+    <p class="card-text"><%= post.body %></p>
+      <h3><strong>Comments: </strong></h3>
       <% post.comments.each do |comment| %>
-        <li><strong><%= comment.user.email %>:</strong> <%= comment.content %></li>
+        <p class="fst-italic"><strong><%= comment.user.email %>:</strong> <%= comment.content %></p>
+        <p class="btn btn-danger"> <%= link_to 'Delete Comment', [post,comment], method: :delete, data: { confirm: 'Are you sure?' } %></p>
       <% end %>
-    </ul>
 
-    <%= form_with(model: [post, @new_comment], url: post_comments_path(post)) do |form| %>
+      <%= form_with(model: [post, @comment], url: post_comments_path(post), remote: true) do |form| %>
       <%= form.text_area :content, placeholder: 'Write your comment here...' %>
-      <%= form.submit 'Submit Comment' %>
-    <% end %>
-    </li>
-    <% $num+=1 %>
+        <p class ="btn btn-secondary"><%= form.submit 'Submit Comment' %></p>
+      <% end %>
+
+
+      <p>Average Rating: <%= post.ratings.average(:rating) %></p>
+      <% post.ratings.each do |rating| %>
+        <p>User: <%= rating.user.email %> | Rating: <%= rating.rating %></p>
+      <% end %>
+
+
+
+      <%= form_for(@rating) do |f| %>
+        <%= f.hidden_field :post_id, value: post.id %>
+        <%= f.label :rating %>
+        <%= f.select :rating, options_for_select(1..5) %>
+        <%= f.submit 'Submit Rating' %>
+      <% end %>
+
+      <hr>
+      <% $num+=1 %>
+    <%end %>
+      </div>
+
     </div>
-  <% end %>
-</ul>
+</div>
 
-
-
-<!--%= will_paginate @posts %>
-<!-%= paginate @posts %-->

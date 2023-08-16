@@ -4,12 +4,27 @@ class CommentsController < ApplicationController
   def create
     @post=Post.find(params[:post_id])
     @comment= @post.comments.build(comment_params)
+
     @comment.user=current_User
+
     if @comment.save
-      redirect_to @post, notice: 'Comment was successfully created'
+      respond_to do |format|
+
+        format.html{redirect_to posts_path, notice: 'Comment was successfully created'}
+        format.js
+      end
+
     else
-      render @post, alert: 'Failed to create comment'
+      render posts_path, alert: 'Failed to create comment'
     end
+  end
+
+
+
+  def destroy
+    @comment=Comment.find(params[:id])
+    @comment.destroy
+    redirect_to root_path, notice: 'Comment was Successfully Deleted'
   end
 
   private

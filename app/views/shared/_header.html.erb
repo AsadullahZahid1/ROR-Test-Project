@@ -8,10 +8,17 @@
       <ul class="navbar-nav">
         <li class="nav-item">
 <!--          <a class="nav-link active" aria-current="page" href="/">Home</a>-->
-          <a class="nav-link active" aria-current="page" href="/"><button type="button" class="btn btn-success position-relative">Profile</button></a>
+<!--          <a class="nav-link active" aria-current="page" href="/"><button type="button" class="btn btn-success position-relative">Home</button></a>-->
         </li>
 
       </ul>
+
+      <%= form_tag(search_posts_path, method: :get, class: "search-form") do %>
+        <%= text_field_tag :search, params[:search], id: "search-form", placeholder: "Search posts..." %>
+        <%= submit_tag "Search" %>
+      <% end %>
+
+
 
     </div>
   </div>
@@ -20,6 +27,16 @@
 
 <nav class="navbar navbar-light bg-light">
   <form class="container-fluid justify-content-end">
-    <button class="btn btn-outline-success me-2" type="button">Contact Admin</button>
+    <button class="btn btn-outline-success me-2" type="button"><%= link_to "Contact Admin", new_contact_path %></button>
+    <%#= form_with(model: @contact) do |form| %>
+      <%#= form.label :subject %>
+      <%#= form.text_field :subject %>
+
+      <%#= form.label :message %>
+      <%#= form.text_area :message %>
+
+      <%#= form.submit "Send" %>
+    <%# end %>
+
   </form>
 </nav>

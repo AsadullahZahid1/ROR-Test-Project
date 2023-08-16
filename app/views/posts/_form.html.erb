@@ -1,0 +1,4 @@
+<%= form_for [@post,Comment.new], remote: true do |f| %>
+<%= f.text_area :content , placeholder: "Write your comment" %>
+    <%=f.submit "Submit Comment" %>
+<% end %>
