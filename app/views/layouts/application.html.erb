@@ -1,114 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TestProject</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= javascript_include_tag "rails-ujs" %>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <%#= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<head>
+  <title>TestProject</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= javascript_include_tag "rails-ujs" %>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <%#= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body>
-
-
+<body>
 
 
-
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= render "shared/header" %>
-
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= render "shared/header" %>
 
 
+<div id="search_result">
 
-    <%= yield %>
-
-
-<!--  <script>-->
-<!--      $(document).ready(function() {-->
-<!--          var form = $('#search-form');-->
+</div>
 
 
-<!--          form.submit(function(event) {-->
-<!--              event.preventDefault();-->
+<%= yield %>
+
+</body>
+</html>
 
 
-<!--              var formData = form.serialize();  -->
-
-<!--              $.ajax({-->
-<!--                  type: form.attr('method'),-->
-<!--                  url: form.attr('action'),-->
-<!--                  data: formData,-->
-<!--                  success: function(response) {-->
-<!--                      $('#search-results').html(response);-->
-<!--                  },-->
-<!--                  error: function() {-->
-<!--                  }-->
-<!--              });-->
-<!--          });-->
-<!--      });-->
-<!--  </script>-->
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-        $(document).ready(function() {
-            var form = $('#search-form');
-
-
-            form.submit(function(event) {
-                event.preventDefault();
-
-
-                var formData = form.serialize();
-                debugger
+<script>
+    $(document).ready(function () {
+        $('#input-text').on('input', function () {
+            var input = $(this).val();
+            if (input !== "") {
                 $.ajax({
-                    type: 'GET',
-                    url: '/posts/search',
-                    data: formData,
-                    success: function(response) {
-                        $('#search-results').html(response);
-                    },
-                    error: function() {
+                    url: "/posts/search",
+                    method: "get",
+                    data: {search: input},
+                    success: function (data) {
+                            $("#search_result").html(data);
                     }
                 });
-            });
+            } else {
+                $("#search_result");
+            }
         });
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </body>
-</html>
+    });
+</script>

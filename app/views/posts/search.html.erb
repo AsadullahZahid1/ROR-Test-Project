@@ -1,11 +1,24 @@
-<!-- app/views/posts/search.html.erb -->
 
 
+<div class="card text-center" >
 
 
-<%# @posts.each do |post| %>
-<!--  <div class="post">-->
-<!--    <h3><%#= post.title %></h3>-->
-<!--    <p><%#= post.body%></p>-->
-<!--  </div>-->
-<%# end %>
+  <div class="p-3 mb-2 bg-dark text-white " >
+    <% @posts.each do |post| %>
+      <div>
+        <h2> Post: <%="#{$num}" %></h2>
+        <strong><h4>Post title: </h4><p><%= post.title %></p> </strong>
+        <strong><h4>Post content:</h4> <p><%= post.body %></p> </strong>
+        <h3><strong>Comments: </strong></h3>
+        <ul>
+
+          <% post.comments.each do |comment| %>
+            <li><strong><%= comment.user.email %>:</strong> <%= comment.content %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!--< to check the functionality of the desire useacase >-->

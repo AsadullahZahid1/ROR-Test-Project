@@ -93,13 +93,10 @@
         <p class ="btn btn-secondary"><%= form.submit 'Submit Comment' %></p>
       <% end %>
 
-
       <p>Average Rating: <%= post.ratings.average(:rating) %></p>
       <% post.ratings.each do |rating| %>
         <p>User: <%= rating.user.email %> | Rating: <%= rating.rating %></p>
       <% end %>
-
-
 
       <%= form_for(@rating) do |f| %>
         <%= f.hidden_field :post_id, value: post.id %>

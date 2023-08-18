@@ -14,7 +14,7 @@
       </ul>
 
       <%= form_tag(search_posts_path, method: :get, class: "search-form") do %>
-        <%= text_field_tag :search, params[:search], id: "search-form", placeholder: "Search posts..." %>
+        <%= text_field_tag :search, params[:search], id: "input-text", placeholder: "Search posts..." %>
         <%= submit_tag "Search" %>
       <% end %>
 
@@ -40,3 +40,78 @@
 
   </form>
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+
+<!--        var inputField = $("#input-text");-->
+<!--        inputField.on("input", function() {-->
+<!--            console.log("Input value changed.....");-->
+
+<!--            var formData = inputField.serialize();-->
+<!--            $.ajax({-->
+<!--                type:'GET',-->
+<!--                url:'/posts/search',-->
+<!--                data: formData,-->
+<!--                success: function(response){-->
+<!--                    $('#search-results').html(response);-->
+<!--                },-->
+<!--                error: function() {-->
+<!--                }-->
+<!--            });-->
+
+<!--        });-->
+<!--    });-->
+
+
+
+<!--    // $(document).ready(function() {-->
+<!--    //     var form = $('#search-form');-->
+<!--    //-->
+<!--    //-->
+<!--    //     form.submit(function(event) {-->
+<!--    //         event.preventDefault();-->
+<!--    //-->
+<!--    //-->
+<!--    //         var formData = form.serialize();-->
+<!--    //         debugger-->
+<!--    //         $.ajax({-->
+<!--    //             type: 'GET',-->
+<!--    //             url: '/posts/search',-->
+<!--    //             data: formData,-->
+<!--    //             success: function(response) {-->
+<!--    //                 $('#search-results').html(response);-->
+<!--    //             },-->
+<!--    //             error: function() {-->
+<!--    //             }-->
+<!--    //         });-->
+<!--    //     });-->
+<!--    // });-->
+<!--</script>-->
