@@ -13,16 +13,28 @@
 
       </ul>
 
-      <%= form_tag(search_posts_path, method: :get, class: "search-form") do %>
-        <%= text_field_tag :search, params[:search], id: "input-text", placeholder: "Search posts..." %>
-        <%= submit_tag "Search" %>
-      <% end %>
+        <%= form_tag(search_posts_path, method: :get, class: "search-form") do %>
+          <%= text_field_tag :search, params[:search], id: "input-text", placeholder: "Search posts..." %>
+          <%= submit_tag "Search", render: "search_results"%>
+        <% end %>
 
 
 
     </div>
   </div>
 </nav>
+
+
+
+
+
+<%= form_tag(search_users_path, method: :get,   class: "search-form") do %>
+  <%= text_field_tag :search, params[:search] , placeholder: "Search Users..." %>
+  <%= submit_tag "Search"%>
+<% end %>
+
+
+<div id="search-result"></div>
 
 
 <nav class="navbar navbar-light bg-light">
@@ -42,6 +54,24 @@
 </nav>
 
 
+<script>
+
+    $(document).ready(function(){
+        $('#search-input').on('input',function(){
+            console.log("in method");
+            var query=$(this).val();
+            $.ajax({
+                url: 'users/live_search',
+                method: 'GET',
+                data: {query: query},
+                success: function(data){
+                    $("#search_result").html(data);
+                }
+            });
+        });
+    });
+
+</script>
 
 
 
@@ -67,51 +97,3 @@
 
 
 
-
-<!--<script>-->
-<!--    $(document).ready(function() {-->
-
-<!--        var inputField = $("#input-text");-->
-<!--        inputField.on("input", function() {-->
-<!--            console.log("Input value changed.....");-->
-
-<!--            var formData = inputField.serialize();-->
-<!--            $.ajax({-->
-<!--                type:'GET',-->
-<!--                url:'/posts/search',-->
-<!--                data: formData,-->
-<!--                success: function(response){-->
-<!--                    $('#search-results').html(response);-->
-<!--                },-->
-<!--                error: function() {-->
-<!--                }-->
-<!--            });-->
-
-<!--        });-->
-<!--    });-->
-
-
-
-<!--    // $(document).ready(function() {-->
-<!--    //     var form = $('#search-form');-->
-<!--    //-->
-<!--    //-->
-<!--    //     form.submit(function(event) {-->
-<!--    //         event.preventDefault();-->
-<!--    //-->
-<!--    //-->
-<!--    //         var formData = form.serialize();-->
-<!--    //         debugger-->
-<!--    //         $.ajax({-->
-<!--    //             type: 'GET',-->
-<!--    //             url: '/posts/search',-->
-<!--    //             data: formData,-->
-<!--    //             success: function(response) {-->
-<!--    //                 $('#search-results').html(response);-->
-<!--    //             },-->
-<!--    //             error: function() {-->
-<!--    //             }-->
-<!--    //         });-->
-<!--    //     });-->
-<!--    // });-->
-<!--</script>-->

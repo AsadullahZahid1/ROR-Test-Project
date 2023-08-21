@@ -37,6 +37,7 @@
 <script>
     $(document).ready(function () {
         $('#input-text').on('input', function () {
+            console.log("this is the first search")
             var input = $(this).val();
             if (input !== "") {
                 $.ajax({
@@ -53,3 +54,18 @@
         });
     });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

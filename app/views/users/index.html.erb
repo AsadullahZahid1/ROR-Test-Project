@@ -1,0 +1,22 @@
+<!--<h1>All Users</h1>-->
+<!--<ul class="user-list">-->
+  <%# @users.each do |user| %>
+<!--    <li class="user-profile">-->
+<!--      <h3><%#= user.email %></h3>-->
+<!--      <div class="tags">-->
+<!--        <strong>Skills:</strong>-->
+        <%# user.skill_list.each do |skill| %>
+<!--          <span class="tag"><%#= skill %></span>-->
+        <%# end %>
+<!--        <br>-->
+<!--        <strong>Expertise:</strong>-->
+        <%# user.expertise_list.each do |expertise| %>
+<!--          <span class="tag"><%#= expertise %></span>-->
+        <%# end %>
+<!--      </div>-->
+<!--    </li>-->
+  <%# end %>
+<!--</ul>-->
+
+
+<%= render "live_search_results", user: @user %>

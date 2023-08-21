@@ -1,0 +1,43 @@
+
+<div id ="search_live_result">
+
+<h1>All Users Profile</h1>
+
+  <%# @users.each do |user| %>
+<!--     <h3><%#= user.email %></h3>-->
+
+<!--        <strong>Skills:</strong>-->
+        <%# user.skill_list.each do |skill| %>
+          <%#= skill %>
+        <%# end %>
+<!--        <br>-->
+<!--        <strong>Expertise:</strong>-->
+        <%# user.expertise_list.each do |expertise| %>
+          <%#= expertise %>
+        <%# end %>
+
+  <%# end %>
+
+
+
+
+<!-- app/views/users/_live_search_results.html.erb -->
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <h3><%= user.email %></h3>
+      <div class="tags">
+        <strong>Skills:</strong>
+        <% user.skill_list.each do |skill| %>
+          <span class="tag"><%= skill %></span>
+        <% end %>
+        <br>
+        <strong>Expertise of User:</strong>
+        <% user.expertise_list.each do |expertise| %>
+          <span class="tag"><%= expertise %></span>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+</div>

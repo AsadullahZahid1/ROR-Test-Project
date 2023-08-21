@@ -69,6 +69,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    acts-as-taggable-on (9.0.1)
+      activerecord (>= 6.0, < 7.1)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     arbre (1.6.0)
@@ -242,8 +244,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
-    rack-proxy (0.7.6)
-      rack
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (6.1.7.4)
@@ -328,7 +328,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    semantic_range (3.0.0)
     shellany (0.0.1)
     simple_form (5.2.0)
       actionpack (>= 5.2)
@@ -369,11 +368,6 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0, < 4.11)
-    webpacker (5.4.4)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket (1.2.9)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -388,6 +382,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 3.0)
   activestorage
+  acts-as-taggable-on (~> 9.0)
   bcrypt (~> 3.1.7)
   better_errors (~> 2.10, >= 2.10.1)
   bootsnap
@@ -427,7 +422,6 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
-  webpacker
 
 RUBY VERSION
    ruby 3.0.0p0

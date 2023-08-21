@@ -31,18 +31,14 @@
     end
     def search
       # byebug
+        @query = params[:search]
+        @posts=Post.where("title LIKE ? OR body  LIKE  ?", "%#{@query}%","%#{@query}%")
+        @comments=Comment.where("content LIKE ?","%#{@query}%")
 
-
-
-      @query = params[:search]
-
-
-        @posts=Post.where("title LIKE ? OR body  LIKE ?", "%#{@query}%","%#{@query}%")
-      @comments=Comment.where("content LIKE ?","%#{@query}%")
-      respond_to do |format|
-        format.html
-        format.js
-      end
+      # respond_to do |format|
+      #   format.html
+      #   format.js
+      # end
       render layout: false
     end
 

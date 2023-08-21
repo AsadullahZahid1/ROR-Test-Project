@@ -64,7 +64,7 @@ gem 'better_errors', '~> 2.10', '>= 2.10.1'
 gem 'bulma-rails', '~> 0.9.4'
 
 gem 'simple_form', '~> 5.2'
-
+gem 'acts-as-taggable-on', '~> 9.0'
 
 
 gem 'devise'
