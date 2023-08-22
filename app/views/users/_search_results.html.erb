@@ -1,0 +1,15 @@
+
+
+    <% @users.each do |user| %>
+      <li>
+        <h2><%= user.email %></h2>
+        <div class="tags">
+          <strong>Skills:</strong>
+          <%= user.skill_list.join(', ') %>
+           <br>
+          <strong>Expertise:</strong>
+          <%= user.expertise_list.join(', ') %>
+        </div>
+      </li>
+    <% end %>
+

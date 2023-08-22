@@ -1,3 +1,5 @@
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +15,27 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+
+    .login-container{
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        max-width: 4px;
+        margin: auto;
+        padding: 20px ;
+        border: 3px solid #ccc;
+        background-color: #019dfe;
+        float: right;
+
+
+    }
+
+    .login-container h2{
+        text-align: center;
+    }
+    .form-inputs{
+        display: inline;
+    }

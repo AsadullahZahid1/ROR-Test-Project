@@ -10,18 +10,20 @@ class UsersController < ApplicationController
 
 
 
-  def search
-    @search_query=params[:search]
-    @users=User.tagged_with(@search_query,on: :skills )
-  end
-
-
-
-
-  # def live_search
-  #   @query=params[:search]
-  #   @users = User.tagged_with(@query, on: :skills)
-  #
-  #
+  # def search
+  #   @search_query=params[:search]
+  #   @users=User.tagged_with(@search_query,on: :skills )
   # end
+
+
+
+
+  def live_search
+    @query=params[:search]
+    @users = User.tagged_with(@query, on: :skills)
+    respond_to do |format|
+      format.js
+    end
+
+  end
 end
