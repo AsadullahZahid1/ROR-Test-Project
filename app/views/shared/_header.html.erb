@@ -18,24 +18,9 @@
           <%= submit_tag "Search", render: "search_results"%>
         <% end %>
 
-
-
     </div>
   </div>
 </nav>
-
-
-
-<%#= form_tag(search_users_path, method: :get,   class: "search-form") do %>
-  <%#= text_field_tag :search, params[:search] , placeholder: "Search Users..." %>
-  <%#= submit_tag "Search"%>
-<%# end %>
-
-
-<!--<div id="search-result"></div>-->
-
-
-
 
 
 
@@ -45,23 +30,6 @@
   <%= text_field_tag :query, params[:query], id: "search-input", placeholder: "Search Users with Skills" %>
 <% end %>
 <div id="search_result"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -82,24 +50,6 @@
 </nav>
 
 
-<script>
-
-    // $(document).ready(function(){
-    //     $('#search-input').on('input',function(){
-    //         console.log("in method");
-    //         var query=$(this).val();
-    //         $.ajax({
-    //             url: 'users/live_search',
-    //             method: 'GET',
-    //             data: {query: query},
-    //             success: function(data){
-    //                 $("#search_result").html(data);
-    //             }
-    //         });
-    //     });
-    // });
-
-</script>
 
 
 

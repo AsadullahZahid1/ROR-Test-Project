@@ -4,7 +4,6 @@ class User < ApplicationRecord
 
 
   validates :email,  uniqueness: true
-  # acts_as_taggable_on :tags
   acts_as_taggable_on :skills, :expertise
   has_many :posts
   has_many :comments

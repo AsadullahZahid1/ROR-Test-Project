@@ -23,7 +23,8 @@
 
 <!-- app/views/users/_live_search_results.html.erb -->
 <ul>
-  <% @users.each do |user| %>
+  <% users_to_display = (@skill_users || []) + (@expertise_users || []) %>
+  <% users_to_display.each do |user| %>
     <li>
       <h3><%= user.email %></h3>
       <div class="tags">

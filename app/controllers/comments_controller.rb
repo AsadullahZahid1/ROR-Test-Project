@@ -24,7 +24,11 @@ class CommentsController < ApplicationController
   def destroy
     @comment=Comment.find(params[:id])
     @comment.destroy
-    redirect_to root_path, notice: 'Comment was Successfully Deleted'
+    respond_to do |format|
+      format.html{   redirect_to root_path, notice: 'Comment was Successfully Deleted'}
+      format.js
+    end
+    # redirect_to root_path, notice: 'Comment was Successfully Deleted'
   end
 
   private

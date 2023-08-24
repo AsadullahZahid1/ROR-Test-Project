@@ -19,8 +19,9 @@ class UsersController < ApplicationController
 
 
   def live_search
+
     @query=params[:search]
-    @users = User.tagged_with(@query, on: :skills)
+    @users = User.tagged_with(@query, on: :skills) | User.tagged_with(@query, on: :expertise)
     respond_to do |format|
       format.js
     end
